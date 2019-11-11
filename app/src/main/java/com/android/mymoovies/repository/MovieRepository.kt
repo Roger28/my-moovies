@@ -18,7 +18,7 @@ class MoviesRepository(private val database: MoviesDatabase) {
 
     suspend fun refreshVideos() {
         withContext(Dispatchers.IO) {
-            val playlist = Network.devbytes.getPlaylistAsync("61e66f4478be035d176b1382fe38d6ce", "pt-BR").await()
+            val playlist = Network.movieService.getPlaylistAsync("61e66f4478be035d176b1382fe38d6ce", "pt-BR").await()
             database.movieDao.insertAll(*playlist.asDatabaseModel())
         }
     }

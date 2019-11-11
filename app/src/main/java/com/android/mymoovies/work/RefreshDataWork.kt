@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.android.mymoovies.database.getDatabase
-import com.android.mymoovies.repository.VideosRepository
+import com.android.mymoovies.repository.MoviesRepository
 import retrofit2.HttpException
 
 class RefreshDataWork(appContext: Context, params: WorkerParameters) :
@@ -12,7 +12,7 @@ class RefreshDataWork(appContext: Context, params: WorkerParameters) :
 
     override suspend fun doWork(): Result {
         val database = getDatabase(applicationContext)
-        val repository = VideosRepository(database)
+        val repository = MoviesRepository(database)
         return try {
             repository.refreshVideos()
             Result.success()

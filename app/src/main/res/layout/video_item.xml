@@ -11,7 +11,7 @@
 
         <variable
             name="movieCallback"
-            type="com.android.mymoovies.home.HomeFragment.MovieClick" />
+            type="com.android.mymoovies.home.MovieClick" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -69,9 +69,8 @@
                 android:layout_marginLeft="4dp"
                 android:layout_gravity="start" />
 
-
             <TextView
-                android:id="@+id/description"
+                android:id="@+id/release_date"
                 android:text="@{movie.release_date}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -85,17 +84,16 @@
                 app:layout_constraintStart_toStartOf="@+id/left_well"
                 app:layout_constraintTop_toBottomOf="@+id/title"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:text="this is a vedeo @android:string/fingerprint_icon_content_description"
                 android:layout_gravity="start" />
 
             <ImageView
                 android:id="@+id/video_thumbnail"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:onClick="@{movieCallback.onClick()}"
                 android:adjustViewBounds="false"
                 android:cropToPadding="false"
                 android:scaleType="centerCrop"
+                app:imageUrl="@{movie.poster_path}"
                 app:layout_constraintDimensionRatio="h,4:3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -107,6 +105,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="?attr/selectableItemBackground"
+                android:onClick="@{() -> movieCallback.onClick(movie)}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

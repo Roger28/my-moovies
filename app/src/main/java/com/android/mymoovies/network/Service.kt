@@ -35,5 +35,5 @@ object Network {
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
-    val devbytes = retrofit.create(MovieService::class.java)
+    val movieService = retrofit.create(MovieService::class.java)
 }
