@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.mymoovies.R
 import com.android.mymoovies.databinding.FragmentHomeBinding
-import com.android.mymoovies.databinding.VideoItemBinding
+import com.android.mymoovies.databinding.MovieItemBinding
 import com.android.mymoovies.domain.Movie
 
 class HomeFragment : Fragment() {
@@ -87,7 +87,7 @@ class MovieAdapter(private val callback: MovieClick) : RecyclerView.Adapter<Movi
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val withDataBinding: VideoItemBinding = DataBindingUtil.inflate(
+        val withDataBinding: MovieItemBinding = DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
             MovieViewHolder.LAYOUT,
             parent,
@@ -106,11 +106,11 @@ class MovieAdapter(private val callback: MovieClick) : RecyclerView.Adapter<Movi
 
 }
 
-class MovieViewHolder(val viewDataBinding: VideoItemBinding) :
+class MovieViewHolder(val viewDataBinding: MovieItemBinding) :
     RecyclerView.ViewHolder(viewDataBinding.root) {
     companion object {
         @LayoutRes
-        val LAYOUT = R.layout.video_item
+        val LAYOUT = R.layout.movie_item
     }
 }
 

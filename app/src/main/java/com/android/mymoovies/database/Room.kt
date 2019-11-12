@@ -29,7 +29,7 @@ fun getDatabase(context: Context): MoviesDatabase {
             INSTANCE = Room.databaseBuilder(
                 context.applicationContext,
                 MoviesDatabase::class.java,
-                "DB")
+                DB)
                 .build()
         }
         return INSTANCE

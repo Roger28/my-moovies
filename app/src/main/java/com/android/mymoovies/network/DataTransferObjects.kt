@@ -5,7 +5,7 @@ import com.android.mymoovies.domain.Movie
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class NetworkMovieContainer(val videos: List<NetworkMovie>)
+data class NetworkMovieContainer(val movies: List<NetworkMovie>)
 
 @JsonClass(generateAdapter = true)
 data class NetworkMovie(
@@ -14,11 +14,8 @@ data class NetworkMovie(
     val vote_average: Double,
     val poster_path: String)
 
-/**
- * Convert Network results to domain objects
- */
 fun NetworkMovieContainer.asDomainModel(): List<Movie> {
-    return videos.map {
+    return movies.map {
         Movie(
             title = it.title,
             release_date = it.release_date,
@@ -27,11 +24,8 @@ fun NetworkMovieContainer.asDomainModel(): List<Movie> {
     }
 }
 
-/**
- *  Convert Network results to database objects
- */
 fun NetworkMovieContainer.asDatabaseModel(): Array<DatabaseMovie> {
-    return videos.map {
+    return movies.map {
         DatabaseMovie(
             title = it.title,
             release_date = it.release_date,

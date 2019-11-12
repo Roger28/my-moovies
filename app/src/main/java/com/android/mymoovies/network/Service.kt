@@ -19,8 +19,11 @@ interface MovieService {
     @GET("movies/get-now-playing")
     fun searchAndQueryDetails(@Query("query") query: String, @Query("api_key") apiKey: String) : Deferred<NetworkMovieContainer>
 
-    @GET("movies/get-now-playing")
+    @GET("movie/get-now-playing")
     fun getPlaylistAsync(@Query("api_key") apiKey: String, @Query("language") language: String): Deferred<NetworkMovieContainer>
+
+    @GET("movie/popular")
+    fun getAsync(@Query("api_key") apiKey: String): Deferred<NetworkMovieContainer>
 }
 
 private val moshi = Moshi.Builder()
@@ -35,5 +38,5 @@ object Network {
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
 
-    val movieService = retrofit.create(MovieService::class.java)
+    val movieService: MovieService = retrofit.create(MovieService::class.java)
 }

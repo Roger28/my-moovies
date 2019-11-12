@@ -14,15 +14,15 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val viewModelJob = SupervisorJob()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
     private val database = getDatabase(application)
-    private val videosRepository = MoviesRepository(database)
+    private val moviesRepository = MoviesRepository(database)
 
     init {
         viewModelScope.launch {
-            videosRepository.refreshVideos()
+            moviesRepository.refreshMovies()
         }
     }
 
-    val playlist = videosRepository.movies
+    val playlist = moviesRepository.movies
 
     override fun onCleared() {
         super.onCleared()
