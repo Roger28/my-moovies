@@ -7,7 +7,7 @@
 
     <activity
         android:id="@+id/homeFragment"
-        android:name="com.android.mymoovies.ui.MainActivity"
+        android:name="com.android.mymoovies.home.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/fragment_home" />
 </navigation>
